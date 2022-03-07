@@ -182,21 +182,18 @@
     timeline.push(endtraining);
 
         ln=list_number%number_of_lists
-        var list = shuffle(lists[ln],choiceofe)
+        var list = shuffle(lists,choiceofe)
         for(j=0;j<(limit+number_of_fillers);j++){
-            var templist = shuffle([list[j][0],list[j][1]],1)
+            var templist = list[j][4]
             var condnew = "part-inf"
-            if(templist[0]==list[j][1]){
-              condnew="inf-part"
-            }
             var trial_3 = {
                 type: "html-keyboard-response-ld",
-                stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + templist[0] + '<br> 1 <br> <br> <br> 4 <br> <br> <br> 7 <br>' +templist[1] + '</p>',
-                choices: ['1','4','7'],
-                correct_choice: ['1','4','7'],
+                stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + templist + '<br> <br> <br> <br> 1 2 3 4 5 6 7' + '</p>',
+                choices: ['1','2','3','4','5','6','7'],
+                correct_choice: ['1','2','3','4','5','6','7'],
                 correct_text:'<p style="font-size:' + font_size + 'px; color:black ;">' + 'Drücken Sie ENTER' +'</p>',
                 incorrect_text:'<p style="font-size:' + font_size + 'px; color:black ;">' + 'Drücken Sie ENTER' +'</p>',
-                data : {stimulus: templist[0]+' '+templist[1], Particpant_id:participant_id, Entry_Number: entry_number,  Experiment_ID: list[j][2], Item_ID : list[j][3], Condition_ID : condnew}
+                data : {stimulus: templist, Particpant_id:participant_id, Entry_Number: entry_number,  Experiment_ID: list[j][2], Item_ID : list[j][0], Condition_ID : list[j][1]}
             }
             timeline.push(fixation);
             timeline.push(trial_3);

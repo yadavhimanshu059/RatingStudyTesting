@@ -53,6 +53,7 @@
                      return a + b;
                  }, 0);
 
+
     /* define instructions trial */
     var instructions = {
       type: "html-button-response",
@@ -117,6 +118,7 @@
       choices:jsPsych.NO_KEYS
     }
 
+
     function shuffle(listo,choice){
         switch(choice) {
             case 0:
@@ -150,9 +152,16 @@
                 return listo;
         }
     }
+    
+    var endtraining = {
+      type: "html-button-response",
+      stimulus: "<p> Übungstests enden hier. Jetzt beginnen wir mit dem Hauptexperiment. </p>",
+      choices: ['Weiter'],
+      post_trial_gap: 1000
+    };
+    timeline.push(endtraining);
 
-
-        ln=list_number%number_of_lists
+      ln=list_number%number_of_lists
         var list = shuffle(lists,choiceofe)
         for(j=0;j<(limit+number_of_fillers);j++){
             var templist = list[j][4]
@@ -168,6 +177,7 @@
             timeline.push(fixation);
             timeline.push(trial_3);
         }
+
 
       var endmain = {
         type: "html-keyboard-response",
@@ -201,8 +211,7 @@
             //proliferate.submit(jsPsych.data.get().filter({trial_type: 'html-keyboard-response-ld'}).csv());
             //proliferate.submit(jsPsych.data.get().filter({trial_type: 'survey-text'}).json());
             //proliferate.submit(jsPsych.data.get().filter({trial_type: 'survey-multi-choice'}).json());
-            //proliferate.submit({"trials": jsPsych.data.get().filter([{trial_type: 'html-keyboard-response-ld'},{trial_type: 'survey-text'},{trial_type: 'survey-multi-choice'}]).values()});
-            proliferate.submit({"trials": jsPsych.data.filter([{trial_type: 'html-keyboard-response-ld'},{trial_type: 'survey-text'},{trial_type: 'survey-multi-choice'}]).values()});
+            proliferate.submit({"trials": jsPsych.data.get().filter([{trial_type: 'html-keyboard-response-ld'},{trial_type: 'survey-text'},{trial_type: 'survey-multi-choice'}]).values()});
       }
     });
   </script>

@@ -77,7 +77,8 @@
       type: 'survey-text',
       questions: [
         {prompt: "Wie alt sind Sie?", name: 'age'},
-        {prompt: "In welcher Region Deutschlands sind Sie aufgewachsen?", name: 'birthlocation'}
+        {prompt: "In welcher Region Deutschlands sind Sie aufgewachsen?", name: 'birthlocation'},
+        {prompt: "In welcher Region wohnen Sie jetzt?", name: 'currentlocation'}
       ],
       post_trial_gap: 500
     };
@@ -95,7 +96,7 @@
 
     var instructions2 = {
       type: "html-button-response",
-      stimulus: "<p> Vielen Dank für Ihre Teilnahme an diesem Experiment. In diesem Experiment müssen Sie zwischen zwei Sätzen wählen, die auf dem Bildschirm angezeigt werden. Sie sollen den Satz wählen, den Sie akzeptabler finden, d. h. den Satz, der für Sie natürlicher klingt. </p>",
+      stimulus: "<p> Vielen Dank für Ihre Teilnahme an diesem Experiment. Ihnen werden mehrere Sätze präsentiert. Bewerten Sie für jeden Satz, wie schwer oder leicht es ist, den Sazt zu verstehen, und wählen Sie aus den gegebenen Alternativen die wahre Aussage aus. </p>",
       choices: ['Weiter'],
 
       post_trial_gap: 500
@@ -104,7 +105,7 @@
 
     var instructions3 = {
       type: "html-button-response",
-      stimulus: "<p> Zuerst sehen Sie ein + Zeichen auf dem Bildschirm. Wenn Sie die ENTER drücken, sehen Sie zwei Sätze auf dem Bildschirm, einen oben auf dem Bildschirm und den anderen unten. Wenn Sie der Meinung sind, dass der Satz oben akzeptabler ist, drücken Sie 1. Wenn der Satz unten akzeptabler ist, drücken Sie 7. Wenn Sie nicht sicher sind, welcher Satz besser ist, drücken Sie 4. <br> Es gibt keine zeitliche Begrenzung. Lesen Sie die Sätze sorgfältig durch und treffen Sie dann Ihre Entscheidung. </p>",
+      stimulus: "<p> Zuerst sehen Sie ein + Zeichen auf dem Bildschirm. Wenn Sie die ENTER drücken, sehen Sie ein Sätz auf dem Bildschirm. <br> Es gibt keine zeitliche Begrenzung. Lesen Sie die Sätze sorgfältig durch und treffen Sie dann Ihre Entscheidung. </p>",
       choices: ['Weiter'],
 
       post_trial_gap: 500

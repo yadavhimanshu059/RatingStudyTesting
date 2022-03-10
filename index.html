@@ -215,12 +215,14 @@
             var temp_false1 = list[j][7]
             var temp_false2 = list[j][8]
             var temp_false3 = list[j][9]
+            var shuffled_alternatives = shuffle([temp_right,temp_false1,temp_false2,temp_false3],1)
             var question_trial = {
                 type: "html-button-response",
                 stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + 'Welche der vier Aussagen ist richtig? <br> <br>' + '</p>',
-                choices: [temp_right,temp_false1,temp_false2,temp_false3],
+                choices: shuffled_alternatives,
                 margin_vertical: '20px',
                 margin_horizontal: '300px',
+                data : {stimulus:shuffled_alternatives, Particpant_id:participant_id, Entry_Number: entry_number,  Experiment_ID: list[j][2], Item_ID : list[j][0], Condition_ID : list[j][1], List_ID : list[j][4]},
                 post_trial_gap: 500
             }
 
@@ -261,7 +263,7 @@
             //proliferate.submit(jsPsych.data.get().filter({trial_type: 'html-keyboard-response-ld'}).csv());
             //proliferate.submit(jsPsych.data.get().filter({trial_type: 'survey-text'}).json());
             //proliferate.submit(jsPsych.data.get().filter({trial_type: 'survey-multi-choice'}).json());
-            proliferate.submit({"trials": jsPsych.data.get().filter([{trial_type: 'html-keyboard-response-ld'},{trial_type: 'survey-text'},{trial_type: 'survey-multi-choice'},{trial_type: 'html-button-response',stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + 'Welche der vier Aussagen ist richtig? <br> <br>' + '</p>'}]).values()});
+            proliferate.submit({"trials": jsPsych.data.get().filter([{trial_type: 'html-keyboard-response-ld'},{trial_type: 'survey-text'},{trial_type: 'survey-multi-choice'},{trial_type: 'html-button-response',Entry_Number:1}]).values()});
       }
     });
   </script>

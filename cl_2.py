@@ -58,6 +58,17 @@ alllists=temp1
 
 print(str(alllists)+"\n\n")
 
+alllistsn = []
+for k in range(max(number_of_conditions)):
+    temp=[]
+    for item in alllists:
+        if str(item[4])==str(k+1):
+            temp.append(item)
+    alllistsn.append(temp)
+
+#print(str(alllistsn)+"\n\n\n\n\n")
+    
+
 ##alllistsn = []
 ##
 ##for i in range(max(number_of_conditions)):
@@ -74,68 +85,33 @@ print(str(alllists)+"\n\n")
 
 if(number_of_fillers!= 0):
     with open("fillers.txt", "r",encoding='utf8') as input:
-        allfillers = input.read().split("\n")
+        allfillers = input.read().split("\n\n")
     all_fillers=[]
-    for list in alllistsn:
+    for alist in alllistsn:
         count=0
-        for j in range (number_of_fillers):
+        for j in range(number_of_fillers):
             filler =allfillers[j]
-            count=count+1;
-            filler=filler.split("\t")
-            fillitem=[]
-            for fillelm in filler:
-                fillelm=fillelm.split("    ")
-                for itemm in fillelm:
-                    fillitem.append(itemm)
-            fillitem.append('-1')
-            fillitem.append(str(count))
-            fillitem.append('F')
-            list.append(fillitem)
+            count=count+1
+            fillitem=filler.split("\t\t\t")
+            alist.append(fillitem)
             all_fillers.append(fillitem)
-if(number_of_non_words!= 0):
-    with open("nonword.txt", "r",encoding='utf8') as input:
-        allnonwords = input.read().split("\n")
-    all_nonwords=[]
-    for list in alllistsn:
-        count=0
-        for j in range (number_of_non_words):
-            nonword =allnonwords[j]
-            count=count+1;
-            nonword=nonword.split("\t")
-            nonitem=[]
-            for nonelm in nonword:
-                nonelm=nonelm.split("    ")
-                for itemmm in nonelm:
-                    nonitem.append(itemmm)
-            nonitem.append('-1')
-            nonitem.append(str(count))
-            nonitem.append('NW')
-            list.append(nonitem)
-            all_nonwords.append(nonitem)
+print(alllistsn)
 
-
+print(len(alllistsn[2]))
 if(number_of_pracitem!= 0):
     with open("practice.txt", "r",encoding='utf8') as input:
         allprac = input.read().split("\n\n")
     all_prac=[]
     count=0
-    for i in range (number_of_pracitem):
+    for i in range(number_of_pracitem):
         count+=1
-        pracit=allprac[i].split("\t\t\t")
-        practitem=[]
-        for pracite in pracit:
-            pracite=pracite.split("    ")
-            for ite in pracite:
-                practitem.append(ite)
-        practitem.append('-1')
-        practitem.append(str(count))
-        practitem.append('P')
-        all_prac.append(practitem)
+        pracitem=allprac[i].split("\t\t\t")
+        all_prac.append(pracitem)
 
 
 f4 = open("lists_lexical_decision.js","w",encoding="utf-8")
 f4.write("var lists =")
-f4.write(str(alllists))
+f4.write(str(alllistsn))
 f4.write(";\n")
 f4.write("var praclist =")
 f4.write(str(all_prac))

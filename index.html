@@ -160,19 +160,35 @@
       post_trial_gap: 1000
     };
     timeline.push(training);
+    
     var plist=shuffle(praclist,choiceofe)
     for(j=0;j<(number_of_pracitem);j++){
+        var temp_prac = plist[j][5]
         var trial_p3 = {
             type: "html-keyboard-response-ld",
-            stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + plist[j][0] + '<br> 1 <br> <br> <br> 4 <br> <br> <br> 7 <br>' + plist[j][1] + '</p>',
-            choices: ['1','4','7'],
+            stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + temp_prac + '<br> <br> <br> <br> <br> <br> 1 &emsp;&emsp;&emsp; 2 &emsp;&emsp;&emsp; 3 &emsp;&emsp;&emsp; 4 &emsp;&emsp;&emsp; 5 &emsp;&emsp;&emsp; 6 &emsp;&emsp;&emsp; 7 &emsp;&emsp;&emsp; 8 &emsp;&emsp;&emsp; 9' + '</p>',
+            choices: ['1','2','3','4','5','6','7','8','9'],
+            correct_choice: ['1','2','3','4','5','6','7','8','9'],
             correct_text:'<p style="font-size:' + font_size + 'px; color:black ;">' + 'Drücken Sie ENTER' +'</p>',
             incorrect_text:'<p style="font-size:' + font_size + 'px; color:black ;">' + 'Drücken Sie ENTER' +'</p>',
-            correct_choice: ['1','4','7'],
-            data : {stimulus: plist[j][0]+'\t'+plist[j][1], Particpant_id:participant_id, Entry_Number: entry_number,  Experiment_ID: plist[j][2], Item_ID : plist[j][3], Condition_ID : plist[j][4]}
+            data : {stimulus: temp_prac, Particpant_id:participant_id, Entry_Number: entry_number,  Experiment_ID: plist[j][2], Item_ID : plist[j][0], Condition_ID : plist[j][1], List_ID : plist[j][4]}
+        }
+
+        var prac_right = plist[j][6]
+        var prac_false1 = plist[j][7]
+        var prac_false2 = plist[j][8]
+        var prac_false3 = plist[j][9]
+        var question_practice = {
+            type: "html-button-response",
+            stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + 'Welche der vier Aussagen ist richtig? <br> <br>' + '</p>',
+            choices: [prac_right,prac_false1,prac_false2,prac_false3],
+            margin_vertical: '20px',
+            margin_horizontal: '300px',
+            post_trial_gap: 500
         }
         timeline.push(fixation);
         timeline.push(trial_p3);
+        timeline.push(question_practice);
     }
     var endtraining = {
       type: "html-button-response",

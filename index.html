@@ -181,14 +181,14 @@
     };
     timeline.push(endtraining);
 
-        ln=list_number%number_of_lists
-        var list = shuffle(lists,choiceofe)
+        ln = shuffle([0,1,2,3],1)
+        var list = shuffle(lists[ln],choiceofe)
         for(j=0;j<(limit+number_of_fillers);j++){
             var templist = list[j][4]
             var condnew = "part-inf"
             var trial_3 = {
                 type: "html-keyboard-response-ld",
-                stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + templist + '<br> <br> <br> <br> 1 2 3 4 5 6 7' + '</p>',
+                stimulus: '<p style="font-size:10px' + font_size + 'px; color:  ' + color + ' ;">' + templist + '<br> <br> <br> <br> <br> <br> 1 &emsp;&emsp;&emsp; 2 &emsp;&emsp;&emsp 3 &emsp;&emsp;&emsp; 4 &emsp;&emsp;&emsp; 5 &emsp;&emsp;&emsp; 6 &emsp;&emsp;&emsp; 7 &emsp;&emsp;&emsp; 8 &emsp;&emsp;&emsp; 9' + '</p>',
                 choices: ['1','2','3','4','5','6','7'],
                 correct_choice: ['1','2','3','4','5','6','7'],
                 correct_text:'<p style="font-size:' + font_size + 'px; color:black ;">' + 'Drücken Sie ENTER' +'</p>',
